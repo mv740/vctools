@@ -1,9 +1,8 @@
 # escape=`
 
 # Use a specific tagged image. Tags can be changed, though that is unlikely for most images.
-# You could also use the immutable tag @sha256:1a66e2b5f3a5b8b98ac703a8bfd4902ae60d307ed9842978df40dbc04ac86b1b
-ARG FROM_IMAGE=microsoft/dotnet-framework:4.7.1-20180410-windowsservercore-1709
-FROM ${FROM_IMAGE}
+ARG FROM_IMAGE=microsoft/dotnet-framework:4.7.2-runtime-windowsservercore-ltsc2019
+FROM ${FROM_IMAGE} AS minimum
 
 # Copy our Install script.
 COPY Install.cmd C:\TEMP\
