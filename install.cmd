@@ -3,6 +3,8 @@ setlocal enabledelayedexpansion
 
 call %*
 if "%ERRORLEVEL%"=="3010" (
+    powershell Remove-Item -Recurse -Force \"$env:APPDATA\..\Local\Temp\"
+    powershell Remove-Item -Recurse -Force \"${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\"
     exit /b 0
 ) else (
     if not "%ERRORLEVEL%"=="0" (
@@ -11,4 +13,6 @@ if "%ERRORLEVEL%"=="3010" (
 
         exit /b !ERR!
     )
+    powershell Remove-Item -Recurse -Force \"$env:APPDATA\..\Local\Temp\"
+    powershell Remove-Item -Recurse -Force \"${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\"
 )
